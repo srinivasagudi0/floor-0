@@ -2,15 +2,18 @@
     <body>
         <h1>FLOOR <span id="floor-no">12</span></h1>
         <p>Reach floor 0. Use &uarr; and &darr;</p>
-    <button id="up">&uarr;</button>
-    <button id="down">&darr;</button>
+    <button id="up" onclick="light()">&uarr;</button>
+    <button id="down" onclick="light()">&darr;</button>
     <h2 id="a"></h2>
     </body>
     <script>
         let floor=12;
         document.getElementById("up").addEventListener("click",function(){
-            floor++;
-            document.getElementById("floor-no").textContent=floor;
+            if(floor<30){
+                floor++;
+                document.getElementById("floor-no").textContent=floor;
+                light();
+            }
         });
         
         document.getElementById("down").addEventListener("click",function(){
@@ -23,5 +26,10 @@
                 document.getElementById("floor-no").textContent=0;
             }
         });
+        function light(){
+            let brightness=10+floor*7.5;
+            document.body.style.background=`rgb(${brightness},${brightness},${brightness})`;
+        }
+        light();
     </script>
 </html>
