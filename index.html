@@ -1,9 +1,22 @@
 <html>
     <body>
-        <h1>FLOOR 12</h1>
-        <p>Reach floor 0. Use ⬆ and ⬇</p>
-        <button>⬆</button>
-        <button>⬇</button>
+        <h1>FLOOR <span id="floor-no">12</span></h1>
+        <p>Reach floor 0. Use &uarr; and &darr;</p>
+    <button id="up">&uarr;</button>
+    <button id="down">&darr;</button>
         ...
     </body>
+    <script>
+        let floor=12;
+
+        document.getElementById("up").addEventListener("click",function(){
+            floor++;
+            document.getElementById("floor-no").textContent=floor;
+        });
+
+        document.getElementById("down").addEventListener("click",function(){
+            floor--;
+            document.getElementById("floor-no").textContent=floor;
+        });
+    </script>
 </html>
