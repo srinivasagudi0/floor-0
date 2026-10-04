@@ -12,6 +12,7 @@
         document.getElementById("up").addEventListener("click",function(){
             if(floor<30){
                 floor++;
+                ding();
                 document.getElementById("floor-no").textContent=floor;
                 if (Math.random() * 30 > 15) {
                     quote = Math.floor(Math.random()*messages.length);
@@ -23,17 +24,20 @@
         
         document.getElementById("down").addEventListener("click",function(){
             if(floor>0){
-                floor--;
-                document.getElementById("floor-no").textContent=floor;
-
-                if(Math.random()*30<15){
-                    quote=Math.floor(Math.random()*messages.length);
-                    a.textContent=messages[quote];
+                if(Math.random()<.1 && floor>1){
+                    floor-=2;
+                    a.textContent="YOU MISSED A FLOOR";
+                }else{
+                    floor--;
+                    if(Math.random()*30<15){
+                        quote=Math.floor(Math.random()*messages.length);
+                        a.textContent=messages[quote];
+                    }
                 }
-
+                ding();
+                document.getElementById("floor-no").textContent=floor;
                 light();
             }
-
             if(floor===0){
                 a.textContent="THE DOORS OPEN";
             }
@@ -43,5 +47,15 @@
             document.body.style.background=`rgb(${brightness},${brightness},${brightness})`;
         }
         light();
+
+        let audio=new AudioContext();
+        function ding(){
+            let o=audio.createOscillator();
+            o.frequency.value = 200 + floor *15
+            o.connect(audio.destination);
+            o.start();
+            o.stop(audio.currentTime+.15);
+        }
+
     </script>
 </html>
