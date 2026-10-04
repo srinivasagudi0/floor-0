@@ -4,19 +4,24 @@
         <p>Reach floor 0. Use &uarr; and &darr;</p>
     <button id="up">&uarr;</button>
     <button id="down">&darr;</button>
-        ...
+    <h2 id="a"></h2>
     </body>
     <script>
         let floor=12;
-
         document.getElementById("up").addEventListener("click",function(){
             floor++;
             document.getElementById("floor-no").textContent=floor;
         });
-
+        
         document.getElementById("down").addEventListener("click",function(){
-            floor--;
-            document.getElementById("floor-no").textContent=floor;
+            if (floor > 0){
+                floor--;
+                document.getElementById("floor-no").textContent=floor;
+            }
+            if (floor===0) {    
+                a.textContent = "THE DOORS OPEN";
+                document.getElementById("floor-no").textContent=0;
+            }
         });
     </script>
 </html>
