@@ -1,4 +1,10 @@
 <html>
+    <style>
+    body{font-family:monospace;text-align:center; font-size: 2rem;}
+    h1{font-size:5rem}
+    button{font-size:5rem;margin:5px;padding:10px 20px}
+    #a{font-size:10rem;letter-spacing:4px}
+    </style>
     <body>
         <h1>FLOOR <span id="floor-no">12</span></h1>
         <p>Reach floor 0. Use &uarr; and &darr;</p>
@@ -38,6 +44,7 @@
                 document.getElementById("floor-no").textContent=floor;
                 light();
             }
+
             if(floor===0){
                 a.textContent="THE DOORS OPEN";
             }
