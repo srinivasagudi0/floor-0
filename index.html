@@ -14,6 +14,19 @@
     </body>
 <script>
         let floor=12;
+        let moving=0;
+
+        function move() {
+            moving=1;
+            let o = audio.createOscillator();
+            o.frequency.value=60;
+            o.connect(audio.destination);
+            o.start();
+            o.stop(audio.currentTime+1.2);
+
+            setTimeout(()=>moving=0,700);
+        }
+
         messages = ["DON'T LOOK BACK.", "WRONG FLOOR", "GO BACK", "I CAN SEE YOU","SOMEONE IS HERE", "BAD CHOICE", "IT KNOWS YOUR FLOOR", "DONT OPEN THE DOOR"];
         let stuck=0;
         let hits=0;
@@ -42,7 +55,9 @@
 
         document.getElementById("up").addEventListener("click",function(){
             if(e())return;
+            if(moving)return;
             if(floor<30){
+                move();
                 floor++;
                 ding();
                 if(Math.random()<.08)glitch();
@@ -58,7 +73,9 @@
         
         document.getElementById("down").addEventListener("click",function(){
             if(e())return;
+            if(moving)return;
             if(floor>0){
+                move();
                 if(Math.random()<.08)glitch();
                 if(Math.random()<.1 && floor>1){
                     floor-=2;
