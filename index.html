@@ -45,6 +45,7 @@
             if(floor<30){
                 floor++;
                 ding();
+                if(Math.random()<.08)glitch();
                 document.getElementById("floor-no").textContent=floor;
                 if (Math.random() * 30 > 15) {
                     quote = Math.floor(Math.random()*messages.length);
@@ -58,6 +59,7 @@
         document.getElementById("down").addEventListener("click",function(){
             if(e())return;
             if(floor>0){
+                if(Math.random()<.08)glitch();
                 if(Math.random()<.1 && floor>1){
                     floor-=2;
                     a.textContent="YOU MISSED A FLOOR";
@@ -76,8 +78,17 @@
 
             if(floor===0){
                 a.textContent="THE DOORS OPEN";
+                document.body.style.background="#000";
+                document.body.style.color="#fff";
+                up.disabled=down.disabled=true;
             }
         });
+
+        function glitch(){
+            let x=["scale(2)","rotate(8deg)","translateX(100px)","rotate(180deg)"];
+            document.body.style.transform=x[Math.floor(Math.random()*x.length)];
+            setTimeout(()=>document.body.style.transform="",400);
+        }
 
         function light(){
             let brightness=10+floor*7.5;
