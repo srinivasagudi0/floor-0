@@ -1,5 +1,5 @@
 <style>body{font-family:monospace;text-align:center; font-size: 2rem;}h1{font-size:5rem}button{font-size:5rem;margin:5px;padding:10px 20px}#a{font-size:10rem;letter-spacing:4px}</style>
-<body><h1>f <span id="n">12</span></h1><p>Reach floor 0. Use &uarr; and &darr;</p><button id="u">&uarr;</button><button id="d">&darr;</button><h2 id="a"></h2></body>
+<body><h1>floor <span id="n">12</span></h1><p>Reach floor 0. Use &uarr; and &darr;</p><button id="u">&uarr;</button><button id="d">&darr;</button><h2 id="a"></h2></body>
 <script>
 let f=12;let m=0;
 function M() {m=1;let o = A.createOscillator();o.frequency.value=60;o.connect(A.destination);o.start();o.stop(A.currentTime+1.2);setTimeout(()=>m=0,1200);}
@@ -38,5 +38,5 @@ function L(){let b=10+f*7.5;document.body.style.background=`rgb(${b},${b},${b})`
 L();
 let A=new AudioContext();
 function D(){
-let o=A.createOscillator();o.frequency.value = 200 + f *15;o.connect(A.destination);o.start();o.stop(A.currentTime+.15);}
+let o=A.createOscillator(),g=A.createGain();o.frequency.value=700+f*15;if(Math.random()<.04){o.frequency.value=80;g.gain.value=2}o.connect(g);g.connect(A.destination);o.start();o.stop(A.currentTime+.15)}
 </script>
