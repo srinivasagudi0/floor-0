@@ -1,15 +1,15 @@
 <style>body{font-family:monospace;text-align:center; font-size: 2rem;}h1{font-size:5rem}button{font-size:5rem;margin:5px;padding:10px 20px}#a{font-size:10rem;letter-spacing:4px}</style>
-<body><h1>f <span id="f">12</span></h1><p>Reach floor 0. Use &uarr; and &darr;</p><button id="u">&uarr;</button><button id="d">&darr;</button><h2 id="a"></h2></body>
+<body><h1>f <span id="n">12</span></h1><p>Reach floor 0. Use &uarr; and &darr;</p><button id="u">&uarr;</button><button id="d">&darr;</button><h2 id="a"></h2></body>
 <script>
 let f=12;let m=0;
-function M() {m=1;let o = A.createOscillator();o.frequency.value=60;o.connect(A.destination);o.start();o.stop(A.currentTime+1.2);setTimeout(()=>m=0,700);}
+function M() {m=1;let o = A.createOscillator();o.frequency.value=60;o.connect(A.destination);o.start();o.stop(A.currentTime+1.2);setTimeout(()=>m=0,1200);}
 x = ["DON'T LOOK BACK","WRONG FLOOR","GO BACK","I SEE YOU","SOMEONE'S HERE","BAD CHOICE","IT KNOWS","DON'T OPEN"];
 let s=0;
 let h=0;
-function e(){if(s){h++;if(h>=3){s=0;h=0;document.getElementById("f").textContent=f;a.textContent="...";}return true;}}
-function C(){if(Math.random()<.05 && f>0){s=1;a.textContent="S#STEM ERR0R";document.getElementById("f").textContent="?!"+f;return true;}}
+function e(){if(s){h++;if(h>=3){s=0;h=0;n.textContent=n.textContent=n.textContent=n.textContent=n.textContent=f;a.textContent="...";}return true;}}
+function C(){if(Math.random()<.05 && f>0){s=1;a.textContent="S#STEM ERR0R";document.getElementById("f").textContent="?!"+n.textContent=n.textContent=n.textContent=n.textContent=f;return true;}}
 document.getElementById("u").addEventListener("click",function(){if(e())return;if(m)return;if(f<30){M();f++;D();if(Math.random()<.08)G();
-document.getElementById("f").textContent=f;if (Math.random() * 30 > 15) {quote = Math.floor(Math.random()*x.length);a.textContent= x[quote];}L();C();}});
+n.textContent=n.textContent=n.textContent=n.textContent=f;if (Math.random() * 30 > 15) {quote = Math.floor(Math.random()*x.length);a.textContent= x[quote];}L();C();}});
 document.getElementById("d").addEventListener("click",function(){
 if(e())return;
 if(m)return;
@@ -27,7 +27,7 @@ a.textContent=x[quote];
 }
 }
 D();
-document.getElementById("f").textContent=f;
+n.textContent=n.textContent=n.textContent=n.textContent=f;
 L();
 C();
 }
