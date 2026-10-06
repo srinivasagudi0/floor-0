@@ -15,7 +15,7 @@
         let f=12;
         let m=0;
 
-        function move() {
+        function M() {
             m=1;
             let o = A.createOscillator();
             o.frequency.value=60;
@@ -43,10 +43,10 @@
             }
         }
 
-        function corrupt(){
+        function C(){
             if(Math.random()<.05 && f>0){
                 s=1;
-                a.textContent="S̷Y̷S̷T̷E̷M̷ ̷E̷R̷R̷O̷R̷";
+                a.textContent="S#STEM ERR0R";
                 document.getElementById("f").textContent="?!"+f;
                 return true;
             }
@@ -56,17 +56,17 @@
             if(e())return;
             if(m)return;
             if(f<30){
-                move();
+                M();
                 f++;
-                ding();
-                if(Math.random()<.08)glitch();
+                D();
+                if(Math.random()<.08)G();
                 document.getElementById("f").textContent=f;
                 if (Math.random() * 30 > 15) {
                     quote = Math.floor(Math.random()*x.length);
                     a.textContent= x[quote];
                 }
-                light();
-                corrupt();
+                L();
+                C();
             }
         });
         
@@ -74,8 +74,8 @@
             if(e())return;
             if(m)return;
             if(f>0){
-                move();
-                if(Math.random()<.08)glitch();
+                M();
+                if(Math.random()<.08)G();
                 if(Math.random()<.1 && f>1){
                     f-=2;
                     a.textContent="YOU MISSED A FLOOR";
@@ -86,10 +86,10 @@
                         a.textContent=x[quote];
                     }
                 }
-                ding();
+                D();
                 document.getElementById("f").textContent=f;
-                light();
-                corrupt();
+                L();
+                C();
             }
 
             if(f===0){
@@ -100,20 +100,20 @@
             }
         });
 
-        function glitch(){
+        function G(){
             let x=["scale(2)","rotate(8deg)","translateX(100px)","rotate(180deg)"];
             document.body.style.transform=x[Math.floor(Math.random()*x.length)];
             setTimeout(()=>document.body.style.transform="",400);
         }
 
-        function light(){
+        function L(){
             let b=10+f*7.5;
             document.body.style.background=`rgb(${b},${b},${b})`;
         }
-        light();
+        L();
 
         let A=new AudioContext();
-        function ding(){
+        function D(){
             let o=A.createOscillator();
             o.frequency.value = 200 + f *15
             o.connect(A.destination);
