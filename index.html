@@ -6,10 +6,10 @@ function M() {m=1;let o = A.createOscillator();o.frequency.value=60;o.connect(A.
 x = ["DON'T LOOK BACK","WRONG FLOOR","GO BACK","I SEE YOU","SOMEONE'S HERE","BAD CHOICE","IT KNOWS","DON'T OPEN"];
 let s=0;
 let h=0;
-function e(){if(s){h++;if(h>=3){s=0;h=0;n.textContent=n.textContent=n.textContent=n.textContent=n.textContent=f;a.textContent="...";}return true;}}
-function C(){if(Math.random()<.05 && f>0){s=1;a.textContent="S#STEM ERR0R";document.getElementById("f").textContent="?!"+n.textContent=n.textContent=n.textContent=n.textContent=f;return true;}}
+function e(){if(s){h++;if(h>=3){s=0;h=0;n.textContent=f;a.textContent="...";}return true;}}
+function C(){if(Math.random()<.05 && f>0){s=1;a.textContent="S#STEM ERR0R";n.textContent="?!"+f;}}
 document.getElementById("u").addEventListener("click",function(){if(e())return;if(m)return;if(f<30){M();f++;D();if(Math.random()<.08)G();
-n.textContent=n.textContent=n.textContent=n.textContent=f;if (Math.random() * 30 > 15) {quote = Math.floor(Math.random()*x.length);a.textContent= x[quote];}L();C();}});
+n.textContent=f;if (Math.random() * 30 > 15) {quote = Math.floor(Math.random()*x.length);a.textContent= x[quote];}L();C();}});
 document.getElementById("d").addEventListener("click",function(){
 if(e())return;
 if(m)return;
@@ -27,7 +27,7 @@ a.textContent=x[quote];
 }
 }
 D();
-n.textContent=n.textContent=n.textContent=n.textContent=f;
+n.textContent=f;
 L();
 C();
 }
