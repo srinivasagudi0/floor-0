@@ -1,4 +1,3 @@
-<html>
     <style>
     body{font-family:monospace;text-align:center; font-size: 2rem;}
     h1{font-size:5rem}
@@ -6,38 +5,38 @@
     #a{font-size:10rem;letter-spacing:4px}
     </style>
     <body>
-        <h1>FLOOR <span id="floor-no">12</span></h1>
+        <h1>f <span id="f">12</span></h1>
         <p>Reach floor 0. Use &uarr; and &darr;</p>
-    <button id="up">&uarr;</button>
-    <button id="down">&darr;</button>
+    <button id="u">&uarr;</button>
+    <button id="d">&darr;</button>
     <h2 id="a"></h2>
     </body>
-<script>
-        let floor=12;
-        let moving=0;
+    <script>
+        let f=12;
+        let m=0;
 
         function move() {
-            moving=1;
-            let o = audio.createOscillator();
+            m=1;
+            let o = A.createOscillator();
             o.frequency.value=60;
-            o.connect(audio.destination);
+            o.connect(A.destination);
             o.start();
-            o.stop(audio.currentTime+1.2);
+            o.stop(A.currentTime+1.2);
 
-            setTimeout(()=>moving=0,700);
+            setTimeout(()=>m=0,700);
         }
 
-        messages = ["DON'T LOOK BACK.", "WRONG FLOOR", "GO BACK", "I CAN SEE YOU","SOMEONE IS HERE", "BAD CHOICE", "IT KNOWS YOUR FLOOR", "DONT OPEN THE DOOR"];
-        let stuck=0;
-        let hits=0;
+        x = ["DON'T LOOK BACK","WRONG FLOOR","GO BACK","I SEE YOU","SOMEONE'S HERE","BAD CHOICE","IT KNOWS","DON'T OPEN"];
+        let s=0;
+        let h=0;
 
         function e(){
-            if(stuck){
-                hits++;
-                if(hits>=3){
-                    stuck=0;
-                    hits=0;
-                    document.getElementById("floor-no").textContent=floor;
+            if(s){
+                h++;
+                if(h>=3){
+                    s=0;
+                    h=0;
+                    document.getElementById("f").textContent=f;
                     a.textContent="...";
                 }
                 return true;
@@ -45,59 +44,59 @@
         }
 
         function corrupt(){
-            if(Math.random()<.05 && floor>0){
-                stuck=1;
+            if(Math.random()<.05 && f>0){
+                s=1;
                 a.textContent="S̷Y̷S̷T̷E̷M̷ ̷E̷R̷R̷O̷R̷";
-                document.getElementById("floor-no").textContent="?!"+floor;
+                document.getElementById("f").textContent="?!"+f;
                 return true;
             }
         }
 
-        document.getElementById("up").addEventListener("click",function(){
+        document.getElementById("u").addEventListener("click",function(){
             if(e())return;
-            if(moving)return;
-            if(floor<30){
+            if(m)return;
+            if(f<30){
                 move();
-                floor++;
+                f++;
                 ding();
                 if(Math.random()<.08)glitch();
-                document.getElementById("floor-no").textContent=floor;
+                document.getElementById("f").textContent=f;
                 if (Math.random() * 30 > 15) {
-                    quote = Math.floor(Math.random()*messages.length);
-                    a.textContent= messages[quote];
+                    quote = Math.floor(Math.random()*x.length);
+                    a.textContent= x[quote];
                 }
                 light();
                 corrupt();
             }
         });
         
-        document.getElementById("down").addEventListener("click",function(){
+        document.getElementById("d").addEventListener("click",function(){
             if(e())return;
-            if(moving)return;
-            if(floor>0){
+            if(m)return;
+            if(f>0){
                 move();
                 if(Math.random()<.08)glitch();
-                if(Math.random()<.1 && floor>1){
-                    floor-=2;
+                if(Math.random()<.1 && f>1){
+                    f-=2;
                     a.textContent="YOU MISSED A FLOOR";
                 }else{
-                    floor--;
+                    f--;
                     if(Math.random()*30<15){
-                        quote=Math.floor(Math.random()*messages.length);
-                        a.textContent=messages[quote];
+                        quote=Math.floor(Math.random()*x.length);
+                        a.textContent=x[quote];
                     }
                 }
                 ding();
-                document.getElementById("floor-no").textContent=floor;
+                document.getElementById("f").textContent=f;
                 light();
                 corrupt();
             }
 
-            if(floor===0){
+            if(f===0){
                 a.textContent="THE DOORS OPEN";
                 document.body.style.background="#000";
                 document.body.style.color="#fff";
-                up.disabled=down.disabled=true;
+                u.disabled=d.disabled=true;
             }
         });
 
@@ -108,18 +107,17 @@
         }
 
         function light(){
-            let brightness=10+floor*7.5;
-            document.body.style.background=`rgb(${brightness},${brightness},${brightness})`;
+            let b=10+f*7.5;
+            document.body.style.background=`rgb(${b},${b},${b})`;
         }
         light();
 
-        let audio=new AudioContext();
+        let A=new AudioContext();
         function ding(){
-            let o=audio.createOscillator();
-            o.frequency.value = 200 + floor *15
-            o.connect(audio.destination);
+            let o=A.createOscillator();
+            o.frequency.value = 200 + f *15
+            o.connect(A.destination);
             o.start();
-            o.stop(audio.currentTime+.15);
+            o.stop(A.currentTime+.15);
         }
 </script>
-</html>
