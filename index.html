@@ -3,7 +3,7 @@
 <script>
 let f=12;let m=0;
 function M() {m=1;let o = A.createOscillator();o.frequency.value=60;o.connect(A.destination);o.start();o.stop(A.currentTime+1.2);setTimeout(()=>m=0,1200);}
-x = ["DON'T LOOK BACK","WRONG FLOOR","GO BACK","I SEE YOU","SOMEONE'S HERE","BAD CHOICE","IT KNOWS","DON'T OPEN"];
+x=["DON'T LOOK BACK","WRONG FLOOR","GO BACK","I SEE YOU","SOMEONE'S HERE","BAD CHOICE","IT KNOWS","DON'T OPEN"];
 let s=0;
 let h=0;
 function e(){if(s){h++;if(h>=3){s=0;h=0;n.textContent=f;a.textContent="...";}return true;}}
