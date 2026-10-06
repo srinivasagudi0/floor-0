@@ -23,3 +23,12 @@ It gets darker and quiter as you go down and uses Web audio for the elevator sou
 - ↓ goes down
 - Reach floor 0
 - If the system breaks, keep pressing the buttons
+
+## Made with
+
+- HTML
+- CSS
+- JavaScript
+- Web Audio API
+
+Made for Hack Club SHRINK :)
