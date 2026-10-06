@@ -8,23 +8,8 @@ let s=0;
 let h=0;
 function e(){if(s){h++;if(h>=3){s=0;h=0;document.getElementById("f").textContent=f;a.textContent="...";}return true;}}
 function C(){if(Math.random()<.05 && f>0){s=1;a.textContent="S#STEM ERR0R";document.getElementById("f").textContent="?!"+f;return true;}}
-document.getElementById("u").addEventListener("click",function(){
-if(e())return;
-if(m)return;
-if(f<30){
-M();
-f++;
-D();
-if(Math.random()<.08)G();
-document.getElementById("f").textContent=f;
-if (Math.random() * 30 > 15) {
-quote = Math.floor(Math.random()*x.length);
-a.textContent= x[quote];
-}
-L();
-C();
-}
-});
+document.getElementById("u").addEventListener("click",function(){if(e())return;if(m)return;if(f<30){M();f++;D();if(Math.random()<.08)G();
+document.getElementById("f").textContent=f;if (Math.random() * 30 > 15) {quote = Math.floor(Math.random()*x.length);a.textContent= x[quote];}L();C();}});
 document.getElementById("d").addEventListener("click",function(){
 if(e())return;
 if(m)return;
@@ -46,29 +31,12 @@ document.getElementById("f").textContent=f;
 L();
 C();
 }
-if(f===0){
-a.textContent="THE DOORS OPEN";
-document.body.style.background="#000";
-document.body.style.color="#fff";
-u.disabled=d.disabled=true;
-}
+if(f===0){a.textContent="THE DOORS OPEN";document.body.style.background="#000";document.body.style.color="#fff";u.disabled=d.disabled=true;}
 });
-function G(){
-let x=["scale(2)","rotate(8deg)","translateX(100px)","rotate(180deg)"];
-document.body.style.transform=x[Math.floor(Math.random()*x.length)];
-setTimeout(()=>document.body.style.transform="",400);
-}
-function L(){
-let b=10+f*7.5;
-document.body.style.background=`rgb(${b},${b},${b})`;
-}
+function G(){let x=["scale(2)","rotate(8deg)","translateX(100px)","rotate(180deg)"];document.body.style.transform=x[Math.floor(Math.random()*x.length)];setTimeout(()=>document.body.style.transform="",400);}
+function L(){let b=10+f*7.5;document.body.style.background=`rgb(${b},${b},${b})`;}
 L();
 let A=new AudioContext();
 function D(){
-let o=A.createOscillator();
-o.frequency.value = 200 + f *15
-o.connect(A.destination);
-o.start();
-o.stop(A.currentTime+.15);
-}
+let o=A.createOscillator();o.frequency.value = 200 + f *15;o.connect(A.destination);o.start();o.stop(A.currentTime+.15);}
 </script>
